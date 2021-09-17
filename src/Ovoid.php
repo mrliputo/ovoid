@@ -516,13 +516,14 @@ class OVOID
      * @param  int                                        $page  halaman ke berapa
      * @param  int                                        $limit berapa kontent dalam 1 page
      * @return \Stelin\Response\WalletTransactionResponse
+     * API V2 masih berfungsi untuk meelihat history. 
      */
-    public function getWalletTransaction($page, $limit = 10)
+    public function getWalletTransaction($page = 1, $limit = 10)
     {
         $ch = new Curl;
 
         return $ch->get(
-            OVOID::BASE_ENDPOINT . 'wallet/v3/transaction?page=' . $page . '&limit=' . $limit . '&productType=001',
+            OVOID::BASE_ENDPOINT . 'wallet/v2/transaction?page=' . $page . '&limit=' . $limit . '&productType=001',
             null,
             $this->_aditionalHeader()
         )->getResponse();
